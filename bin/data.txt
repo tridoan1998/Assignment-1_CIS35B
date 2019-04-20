@@ -1,0 +1,20 @@
+Color
+10
+Fort Knox Gold Clearcoat Metallic,Liquid Grey Clearcoat Metallic,Infra-Red Clearcoat,Grabber Green ClearcoatMetallic,Sangria Red Clearcoat Metallic,French Blue Clearcoat Metallic,Twilight Blue Clearcoat Metallic,CD Silver ClearcoatMetallic,Pitch Black Clearcoat,Cloud 9 White Clearcoat
+0,0,0,0,0,0,0,0,0,0
+Transmission
+2
+automatic,manual
+0,-815
+Brakes/TractionControl
+3
+Standard,ABS,ABS with Advance Trac
+0,400,1625
+Side Impact Air Bags
+2
+present,not present
+350,0
+Power Moonroof
+2
+present,not present
+595,0
