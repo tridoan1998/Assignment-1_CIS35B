@@ -1,26 +1,19 @@
 package model;
 import java.io.*;
-import java.util.*;
 
-import driver.*;
-import util.*;
-import model.OptionSet.Option;
+import model.OptionSet.*;
 
-//creation of a component - group of classes with access from a single outermost object - in this case Automotive 
-
-
-
-//all properties will be private
-//methods in Option and OptionSet will be protected.
-
-public class Automotive {
+public class Automotive implements Serializable{
+	//stop the serializable class does not declare
+    private static final long serialVersionUID = 1L;
+    
 	private String name;
-	private OptionSet opset[];  //color 
+	private OptionSet opset[];
 	private float baseprice;
 	
 	//don't need default constructor because no model should be zero
 	
-	//constructor to initinize object 
+	//constructor to initialize object 
 	public Automotive(int size, String n, float b)
 	 {
 		 this.opset = new OptionSet[size];
@@ -30,6 +23,8 @@ public class Automotive {
 		 this.baseprice = b;
 	 }
 	
+	
+	//Getter and Setter 
 	public String getName() {
 		return name;
 	}
@@ -49,6 +44,9 @@ public class Automotive {
 		this.baseprice = baseprice;
 	}
 	
+	/*
+	 * Function: to create Option array within each OptionSet array
+	 */
 	public void createOption(int size, int index)
 	{
 		//create empty Option class based on the size and add those option just created to the OptionSet class
@@ -57,12 +55,7 @@ public class Automotive {
 			{
 				opt[i]= opset[index].new Option();
 			}
-			
 			opset[index].setOpt(opt);
-
-	//still could not create the right length for each option in optionset		
-		//for(int i = 0; i < opset.length;i++)
-			//opset[i].setOpt(opt);
 	}
 	
 	public void setNameForOptionSet(String name, int index)
@@ -74,7 +67,6 @@ public class Automotive {
 	{
 		return getOpset()[index].getName();
 	}
-	
 	
 	public void setNameForOption(String name, int index2, int temp)
 	{
@@ -96,6 +88,12 @@ public class Automotive {
 		return getOpset()[index1].getOpt()[index2].getPrice();
 	}
 	
+	
+	/*
+	 * Function: print out all the Option in every OptionSet in the Car object
+	 * Parameter: none
+	 * Return type: void  
+	 */
 	public void print()
 	{
 		System.out.println(getName() + "   $"+  getBaseprice());
@@ -136,17 +134,32 @@ public class Automotive {
 	}
 	
 	
+	/*
+	 * Function: delete one OptionSet and set it to null
+	 * Parameter: index of the OptionSet array
+	 * Return: void
+	 */
 	public void deleteOptionSet(int index)
 	{
 		getOpset()[index] = null;
 	}
 	
+	/*
+	 * Function: delete one of the option under given OptionSet
+	 * Parameter: index of OptionSet and Option want to delete
+	 *  Return: void
+	 */
 	public void deleteOption(int index1, int index2)
 	{
 		getOpset()[index1].getOpt()[index2] = null;
 	}
 	
 	
+	/*
+	 * Function: Find the OptionSet in the Car object
+	 * Parameter: a String to search for it in the OptionSet
+	 * Return: the index of the OptionSet array hold the String value 
+	 */
 	public int findOptionSet(String name)
 	{
 		for(int i = 0; i < opset.length; i++) 
@@ -161,12 +174,21 @@ public class Automotive {
 		return -1;
 	}
 	
+	/*
+	 *Function: find if one Option existed in the Option array 
+	 *Parameter: a String of Option to search for and the index of the OptionSet array
+	 *Return: the index of where that Option is at in the given OptionSet array   
+	 */
 	public int findOption(String name, int index)
 	{	
+		index--;
 		OptionSet.Option [] options = opset[index].getOpt();
-		for(int i = 0; i < options.length; i++) {
-			if(options[i] != null) {
-				if(options[i].getName().contentEquals(name)) {
+		for(int i = 0; i < options.length; i++) 
+		{
+			if(options[i] != null) 
+			{
+				if(options[i].getName().contentEquals(name)) 
+				{
 					return i+1;
 				}
 			}
@@ -174,14 +196,31 @@ public class Automotive {
 		return -1;
 	}
 	
+	/*
+	 * Function: update the OptionSet name to a new name
+	 * Parameter: a String and an index 
+	 * Return: void, name of the OptionSet should be updated
+	 */
 	public void updateOptionSetName(String newname, int index)
 	{
 		this.opset[index].setName(newname);
 	}
+	
+	/*
+	 * Function: update Option Name to a new one
+	 * Parameter: a String for new name, index of the OptionSet and index of Option
+	 * Return: void 
+	 */
 	public void updateOptionName(String name, int index1, int index2)
 	{
 		this.opset[index1].getOpt()[index2].setName(name);
 	}
+	
+	/*
+	 * Function: update Option Price with a new price 
+	 * Parameter: float new price to update, index of OptionSet and index of Option 
+	 * Return: void 
+	 */
 	public void updateOptionPrice(float newprice, int index1, int index2)
 	{
 		this.opset[index1].getOpt()[index2].setPrice(newprice);

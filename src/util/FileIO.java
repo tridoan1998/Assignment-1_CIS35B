@@ -2,7 +2,6 @@ package util;
 import java.io.*;
 import java.util.*;
 import model.*;
-import driver.*;
 
 public class FileIO {
 	
@@ -114,8 +113,8 @@ public class FileIO {
 	//archive the object using Serialization
 	public void Serialize(Automotive Car)
 	{
+		try {
 		String filename = "file.ser";
-		try{
 	        FileOutputStream file = new FileOutputStream(filename); 
 	        ObjectOutputStream out = new ObjectOutputStream(file); 
 	        out.writeObject(Car);           
@@ -127,18 +126,17 @@ public class FileIO {
 		}
 	}
 	
-	public void Derialize(String filename, int optionsetsize, String name, float price)
+	public void Derialize(String filename, Automotive Car)
 	{
 	       try
 	        {    
-	    	    Automotive Car = new Automotive(optionsetsize, name, price);
 	    	    FileInputStream file = new FileInputStream(filename); 
 	            ObjectInputStream in = new ObjectInputStream(file); 
 	            // Method for deserialization of object 
-	            Car = (Automotive)in.readObject(); 
+	            Car = (Automotive) in.readObject(); 
 	            in.close(); 
 	            file.close(); 
-	            System.out.println("Object has been deserialized "); 
+	            System.out.println("Object has been deserialized ");
 	        } 	          
 	        catch(IOException ex) 
 	        { 

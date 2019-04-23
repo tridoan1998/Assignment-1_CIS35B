@@ -1,10 +1,12 @@
 package model;
 
-import util.*;
+import java.io.Serializable;
 
-
-public class OptionSet {
-	private Option opt [];
+public class OptionSet implements Serializable{
+	//stop the serializable class does not declare
+    private static final long serialVersionUID = 1L;
+	
+    private Option opt [];
 	private String name;
 	  
 	
@@ -22,9 +24,12 @@ public class OptionSet {
 		  name = n;
 	  }
 	  
-	  public class Option 
+	  public class Option implements Serializable
 	  {  
-		  private String name;
+		  //stop the serializable class does not declare
+	      private static final long serialVersionUID = 1L;
+		 
+	      private String name;
 		  private float price;
 		  
 		  
@@ -54,12 +59,7 @@ public class OptionSet {
 			this.price = price;
 		}
  
-		  protected void print()
-		{
-			
-		}
 	  }
-
 
 	  protected Option [] getOpt() {
 		  return this.opt;
