@@ -5,7 +5,11 @@ import model.*;
 
 public class FileIO {
 	
-	//Put Car lower case 
+	/*
+	 * Function: build an Automotive Object by reading data from file and insert into arrays of OptionSet and Option
+	 * Parameter: a String of filename, an Object 
+	 * Return: a Object with all data inserted into OptionSet and Option
+	 */
 	public Automotive buildAutomotiveObject(String filename, Automotive Car)
 	{
 		try {
@@ -26,7 +30,7 @@ public class FileIO {
 				 eof = true;
 			 }
 
-			 //get optionset name
+			 //get OptionSet name
 			 else if(counter == 1 || counter == 5 || counter == 9|| counter == 13 || counter == 17)
 			 {
 				 Car.setNameForOptionSet(line, index2);
@@ -110,7 +114,11 @@ public class FileIO {
 		return null;
 	}
 	
-	//archive the object using Serialization
+	/*
+	 * Function: Archive the object using Serialization
+	 * Parameter: an Object 
+	 * Return: the Object will be Serialize to a .ser file
+	 */
 	public void Serialize(Automotive Car)
 	{
 		try {
@@ -126,7 +134,12 @@ public class FileIO {
 		}
 	}
 	
-	public void Derialize(String filename, Automotive Car)
+	/*
+	 * Function: Deserialize an object back into the program
+	 * Parameter: a String, an object 
+	 * Return: the object being Deserialize
+	 */
+	public void Deserialize(String filename, Automotive Car)
 	{
 	       try
 	        {    

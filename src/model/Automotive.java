@@ -46,6 +46,8 @@ public class Automotive implements Serializable{
 	
 	/*
 	 * Function: to create Option array within each OptionSet array
+	 * Parameter: int size of the Option array, and index of the OptionSet
+	 * Return: void, an Option array created under the given OptionSet
 	 */
 	public void createOption(int size, int index)
 	{
@@ -58,6 +60,7 @@ public class Automotive implements Serializable{
 			opset[index].setOpt(opt);
 	}
 	
+	//Getter and Setter for OptionSet and Option
 	public void setNameForOptionSet(String name, int index)
 	{
 		getOpset()[index].setName(name);
